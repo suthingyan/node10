@@ -8,6 +8,9 @@ var session=require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var postsRouter=require('./routes/posts');
+var apiPostsRouter=require('./api/routes/post');
+var apiUsersRouter=require('./api/routes/users');
+var apiAdminsRouter=require('./api/routes/admin');
 var app = express();
 
 // view engine setup
@@ -24,10 +27,12 @@ app.use(session({
   resave:false,
   saveUninitialized:true
 }))
-mongoose.connect("mongodb://127.0.0.1/node10db");
+mongoose.connect("mongodb+srv://suthingyan:sutagyan@cluster0.eybx7.mongodb.net/node10db?retryWrites=true&w=majority");
 var db=mongoose.connection;
 db.on("error",console.error.bind(console,"MongoDB connection error:"));
-
+app.use('/api/users',apiUsersRouter);
+app.use('/api/post',apiPostsRouter);
+app.use('/api/',apiAdminsRouter);
 app.use('/', indexRouter);
 app.use(function(req,res,next){
   if(req.session.user){

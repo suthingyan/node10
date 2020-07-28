@@ -13,6 +13,10 @@ var PostSchema=new mongoose.Schema(
 author:{
        type:Schema.Types.ObjectId,
        ref :"Users"
+   },
+   imgUrl:{
+       type:String,
+       required:true
    }
 }
    )
