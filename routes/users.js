@@ -41,13 +41,13 @@ router.get('/userupdate/:id',function(req,res){
 res.render('user/user_update',{user:rtn})
     })
 })
-router.post('userupdate',function(req,res){
+router.post('/userupdate',function(req,res){
     var update={
-        name:req.body.name,
-        email:req.body.email,
-        password:bcrypt.hashSync(req.body.pwd,bcrypt.genSaltSync(8),null)
+        name:req.body.uname,
+        email:req.body.uemail,
+        password:bcrypt.hashSync(req.body.password,bcrypt.genSaltSync(8),null)
     };
-    User.findByIdAndUpdate(req.params.id,{$ser:update},function(err,rtn){
+    User.findByIdAndUpdate(req.body.id,{$set:update},function(err,rtn){
         if(err)throw err;
         console.log(rtn);
 res.redirect('/users/userlist')

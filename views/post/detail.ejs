@@ -1,26 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail</title>
+    <% include ../partial/head %>
 </head>
-<body>
-    <h1>Detail</h1>
+<body data-background-color="dark">
+    <div class="wrapper">
+		<% include ../partial/header %>
+	
+		<!-- Sidebar -->
+		<% include ../partial/sidebar %>
+		<!-- End Sidebar -->
+
+    <div class="main-panel">
+        <div class="content">
+            
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            
+                            
+                                <div class="card-body">
+									<div class="user-profile text-center">
+                                <div class="row">
+                                    
+                                        <h1>Profile</h1>
+                                        <div class="col-md-12 col-lg-10">
+                                    
+                                        <div class="form-group"> 
+                                        <div><img src="<%= post.imgUrl%>" alt='' width="300" height="200"><p></p></div>
+                                        <div>Title:<%= post.title%><p></p></div>
+                                        <div>Content:<%= post.content%><p></p></div>
+                                        <div>Author Name:<%= post.author.name%><p></p></div>
+                                        <div>Author Email:<%= post.author.email%><p></p></div>  
+                                        </div>
+                                        </div>                             
+    </div>
+    </div>
+    <% include ../partial/footer %>	
+	</div>	
+	</div>
+		
+		<!-- Custom template | don't include it in your project! -->
+		<% include ../partial/customTemplate %>
+		<!-- End Custom template -->
+	</div>
+	<!--   Core JS Files   -->
+	<% include ../partial/script %>
+    <!-- <h1>Detail</h1>
     Title:<%= post.title%><p></p>
     Content:<%= post.content%><p></p>
     Profile:<img src="<%= post.imgUrl%>" alt='' width="100" height="100"><p></p>
     Author Name:<%= post.author.name%><p></p>
     Author Email:<%= post.author.email%><p></p>
     <a href="/posts/update/<%=post._id%>"><button>Update</button></a>
-    <button onclick="del();">Delete</button>
+    <button onclick="del();">Delete</button> -->
 </body>
-<script>
+<!-- <script>
     function del(){
     var con=confirm("Are you sure delete?");
     if(con){
         location.href="/posts/delete/<%=post._id%>";
     };
     };
-</script>
+</script> -->
 </html>

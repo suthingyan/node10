@@ -1,13 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post Add</title>
+    <% include ../partial/head %>
 </head>
-<body>
-    <h1>Post Add</h1>
-    <form action="/posts/add" method="post" enctype="multipart/form-data">
+<body data-background-color="dark">
+    <div class="wrapper">
+		<% include ../partial/header %>
+	
+		<!-- Sidebar -->
+		<% include ../partial/sidebar %>
+		<!-- End Sidebar -->
+    <div class="main-panel">
+        <div class="content">
+            <div class="page-inner">
+                <div class="page-header">
+                    <h4 class="page-title">Forms</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <a href="#">
+                                <i class="flaticon-home"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">Forms</a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">Basic Form</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Form Elements</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <form action="/posts/add" method="post" enctype="multipart/form-data">
+                                        <div class="col-md-12 col-lg-10">
+                                        <div class="form-group">
+                                            <label for="title">Title</label>
+                                            <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title">
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="content">Content</label>
+                                            <input type="text" class="form-control" name="content" id="content" placeholder="Enter Content">
+                                        </div>
+                                        <div class="form-group form-inline">
+                                            <label for="author" class="col-md-3 col-form-label">Author</label>
+                                            <div class="col-md-9 p-0">
+                                                <select name="author" id="author">
+                                                    <% for(var i=0;i<users.length;i++){%>
+                                                    <option value="<%= users[i]._id %>">
+                                                       <%= users[i].name %> 
+                                                    </option>
+                                                    <%}%>
+                                                </select><p></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-success">
+                                            <label for="img">Image</label>
+                                            <input type="file" name="photo" id="img"><p></p>
+                                        </div>
+                                        <div class="form-group has-success">
+                                            
+                                            <input type="submit" value="Add">
+                                        </div>
+                                        </form>
+            </div>
+        </div>                                
+    </div>
+                    </div>
+                    <% include ../partial/footer %>	
+	</div>	
+	</div>
+		
+		<!-- Custom template | don't include it in your project! -->
+		<% include ../partial/customTemplate %>
+		<!-- End Custom template -->
+	</div>
+	<!--   Core JS Files   -->
+	<% include ../partial/script %>
+</body>
+    <!-- <form action="/posts/add" method="post" enctype="multipart/form-data">
         <label for="title">Title</label>
         <input type="text" name="title" id="title"><p></p>
         <label for="content">Content</label>
@@ -23,6 +106,6 @@
         <label for="img">Image</label>
         <input type="file" name="photo" id="img"><p></p>
         <input type="submit" value="Add">
-    </form>
-</body>
+    </form> -->
+
 </html>   

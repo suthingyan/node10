@@ -19,6 +19,7 @@ router.post('/add',upload.single("photo"),function(req,res){
     post.title=req.body.title;
     post.content=req.body.content;
     post.author=req.body.author;
+    post.photo=req.body.photo;
     if(req.file)post.imgUrl="/images/uploads/"+req.file.filename;
     post.save(function(err,rtn){
         if(err)throw err;
@@ -54,12 +55,13 @@ router.get('/detail/:id',function(req,res){
         var update={
             title:req.body.title,
             content:req.body.content,
-            author:req.body.author
-        };
-        Post.findByIdAndUpdate(req.body.id,{$set:'update'},function(err,rtn){
+            author:req.body.author,
+          };
+          
+        Post.findByIdAndUpdate(req.body.id,{$set:update},function(err,rtn){
             if(err)throw err;
             console.log(rtn);
-            res.redirect('posts/list');
+            res.redirect('/posts/list');
         })
     })
     router.get('/delete/:id',function(req,res){

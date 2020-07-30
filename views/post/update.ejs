@@ -1,12 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update</title>
+    <% include ../partial/head %>
 </head>
-<body>
-    <h1>Post Update</h1>
+<body data-background-color="dark">
+    <div class="wrapper">
+		<% include ../partial/header %>
+	
+		<!-- Sidebar -->
+		<% include ../partial/sidebar %>
+		<!-- End Sidebar -->
+    <div class="main-panel">
+        <div class="content">
+            <div class="page-inner">
+                <div class="page-header">
+                    <h4 class="page-title">Forms</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <a href="#">
+                                <i class="flaticon-home"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">Forms</a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">Basic Form</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        
+                            <div class="card-body">
+                                <div class="row">
+                                    <form action="/posts/update" method="post">
+                                        <input type="hidden" name="id" value="<%=post._id%>">
+                                        <div class="col-md-12 col-lg-10">
+                                            <div class="form-group">
+                                                <label for="title">Title</label>
+                                                <input type="text" class="form-control" id="title" value="<%=post.title%>" name="title" placeholder="Enter Title">
+                                            </div>    
+                                            <div class="form-group">
+                                            <label for="content">Content</label>
+                                            <input type="text" name="content" class="form-control" value="<%=post.content%>" id="content" placeholder="Enter Content">
+                                            </div>
+                                            <div class="form-group">
+                                            <label for="author">Author</label><p></p>
+                                            <select name="author" id="author">
+                                                <% for(var i=0;i<users.length;i++){%>
+                                                <option value="<%= users[i]._id %>"
+                                                    <%= users[i]._id.equals(post.author)?"selected":'' %>>
+                                                    <%= users[i].name %> 
+                                                </option>
+                                                <%}%>
+                                            </select><p></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="submit" value="Update" class="btn btn-success">
+                                            </div>
+                                            
+                                        </div>
+                                    </form>
+                                    </div>
+                                    </div>
+                                    </div>
+                                        
+    </div>
+    <% include ../partial/footer %>	
+	</div>	
+	</div>
+		
+		<!-- Custom template | don't include it in your project! -->
+		<% include ../partial/customTemplate %>
+		<!-- End Custom template -->
+	</div>
+	<!--   Core JS Files   -->
+	<% include ../partial/script %>
+    <!-- <h1>Post Update</h1>
     <form action="/posts/update" method="post">
         <input type="hidden" name="id" value="<%=post._id%>">
            <label for="title">Title</label>
@@ -21,9 +98,13 @@
                <%= users[i].name %> 
             </option>
             <%}%>
-           </select>
+           </select><p></p>
+           
+            <label for="img">Image</label>
+            <input type="file" name="photo" id="img"><p></p>
+        
            <p></p>
            <input type="submit" value="Update">
-       </form>
+       </form> -->
 </body>
 </html>
