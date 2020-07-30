@@ -54,7 +54,7 @@ res.redirect('/users/userlist')
     })
 })
 router.get('/userdelete/:id',function(req,res){
-    Post.findByIdAndRemove(req.params.id,function(err,rtn){
+    User.findByIdAndRemove(req.params.id,function(err,rtn){
         if(err)throw err;
         console.log(rtn);
         res.redirect('/users/userlist')
